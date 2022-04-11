@@ -22,4 +22,4 @@ Route::get('/', function () {
 });
 
 Route::get('/Blog', [BlogController::class, 'index']);
-Route::get('/Blog/{slug}',[BlogController::class, 'detail']);
+Route::get('/Blog/{post:slug}',[BlogController::class, 'detail']);

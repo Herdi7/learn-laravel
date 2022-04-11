@@ -9,7 +9,7 @@
             </div>
           <div class="col">
             <div class="card-body">
-              <h2 class="card-title"><a href="/Blog/{{ $post['slug'] }}" class="bold link-danger text-decoration-none">{{ $post['title'] }}</a></h2>
+              <h2 class="card-title"><a href="/Blog/{{ $post->slug }}" class="bold link-danger text-decoration-none">{{ $post->title }}</a></h2>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
@@ -17,3 +17,4 @@
       </div>
     @endforeach
 @endsection
+

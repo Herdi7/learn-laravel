@@ -15,11 +15,11 @@ class BlogController extends Controller
         ]);
     }
 
-    public function detail($slug)
+    public function detail(Post $post)
     {
         return view('detail', [
             'title' => 'Single Post',
-            'post' => Post::find($slug)
+            'post' => $post
         ]);
     }
 }
