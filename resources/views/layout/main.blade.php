@@ -19,7 +19,7 @@
                 @yield('main')
             </div>
             <div class="col-md-4">
-                @include('partials/sidebar')
+                {{-- @include('partials/sidebar') --}}
             </div>
         </div>
     </div>
