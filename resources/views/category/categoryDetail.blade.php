@@ -1,6 +1,7 @@
 @extends('layout/main')
 
 @section('main')
+    <h1>Menampilkan postingan <span class="text-danger">"{{ $title }}"</span></h1>
     @foreach ($posts as $post)
     <div class="mb-3">
         <div class="row g-0">
@@ -10,7 +11,6 @@
           <div class="col">
             <div class="card-body">
               <h2 class="card-title"><a href="/Blog/{{ $post->slug }}" class="bold link-danger text-decoration-none">{{ $post->title }}</a></h2>
-              <p class="card-text"><small class="text-muted">{{ $post->category->name }}</small></p>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
