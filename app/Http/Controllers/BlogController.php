@@ -17,7 +17,7 @@ class BlogController extends Controller
 
     public function detail(Post $post)
     {
-        return view('detail', [
+        return view('singlePost', [
             'title' => 'Single Post',
             'post' => $post
         ]);

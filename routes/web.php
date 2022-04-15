@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -22,7 +23,11 @@ Route::get('/', function () {
     ]);
 });
 
+// Blog
 Route::get('/Blog', [BlogController::class, 'index']);
 Route::get('/Blog/{post:slug}',[BlogController::class, 'detail']);
+// category
 Route::get('/Category',[CategoryController::class, 'index']);
 Route::get('/Category/{category:slug}',[CategoryController::class, 'Category']);
+// User
+Route::get('/User/{user}', [UserController::class, 'userPost']);
