@@ -7,13 +7,19 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-
-    public function userPost(User $user)
+    public function index()
     {
-        // dd($category);
+        return view('user/author',[
+            'title' => 'Author List',
+            'authors' => User::all()
+        ]);
+    }
+
+    public function userPost(User $author)
+    {
         return view('user/userPost', [
-            'title' => $user->name,
-            'posts' => $user->posts
+            'title' => $author->name,
+            'posts' => $author->posts
         ]);
 
     }

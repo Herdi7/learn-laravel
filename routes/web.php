@@ -30,4 +30,5 @@ Route::get('/Blog/{post:slug}',[BlogController::class, 'detail']);
 Route::get('/Category',[CategoryController::class, 'index']);
 Route::get('/Category/{category:slug}',[CategoryController::class, 'Category']);
 // User
-Route::get('/User/{user}', [UserController::class, 'userPost']);
+Route::get('/Authors', [UserController::class, 'index']);
+Route::get('/Authors/{author:username}', [UserController::class, 'userPost']);
