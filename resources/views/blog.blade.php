@@ -1,6 +1,7 @@
 @extends('layout/main')
 
 @section('main')
+<h1 class="mb-4">{{ $title }}</h1>
     @foreach ($posts as $post)
     <div class="mb-3">
         <div class="row g-0">
@@ -10,7 +11,7 @@
           <div class="col">
             <div class="card-body">
               <h2 class="card-title"><a href="/Blog/{{ $post->slug }}" class="bold link-danger text-decoration-none">{{ $post->title }}</a></h2>
-              <p class=""><small class="text-muted">{{ $post->category->name }}</small></p>
+              <a href="/Category/{{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a>
               <p class="card-text">By {{ $post->excerpt }}</p>
             </div>
           </div>

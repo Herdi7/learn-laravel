@@ -18,9 +18,9 @@ class CategoryController extends Controller
     public function category(Category $category)
     {
         // dd($category);
-        return view('category/categoryDetail', [
-            'title' => $category->name,
-            'posts' => $category->posts
+        return view('blog', [
+            'title' => "Category By: $category->name",
+            'posts' => $category->posts->load('author', 'category')
         ]);
 
     }

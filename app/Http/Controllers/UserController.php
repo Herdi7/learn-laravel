@@ -17,9 +17,9 @@ class UserController extends Controller
 
     public function userPost(User $author)
     {
-        return view('user/userPost', [
-            'title' => $author->name,
-            'posts' => $author->posts
+        return view('blog', [
+            'title' => "Write by: $author->name",
+            'posts' => $author->posts->load('author', 'category')
         ]);
 
     }

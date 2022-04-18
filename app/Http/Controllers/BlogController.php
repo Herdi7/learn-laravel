@@ -10,8 +10,8 @@ class BlogController extends Controller
     public function index()
     {
         return view('blog', [
-            'title' => 'Blog',
-            'posts' => Post::latest()->get()
+            'title' => 'All Post',
+            'posts' => Post::with('author', 'category')->latest()->get()
         ]);
     }
 
