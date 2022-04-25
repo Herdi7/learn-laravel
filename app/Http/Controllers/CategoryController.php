@@ -9,8 +9,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('category/category', [
-            'title' => 'List Category',
+        return view('category/categoryDetail', [
+            'title' => 'Category',
             'categories' => Category::all()
         ]);
     }
@@ -19,8 +19,9 @@ class CategoryController extends Controller
     {
         // dd($category);
         return view('blog', [
-            'title' => "Category By: $category->name",
-            'posts' => $category->posts->load('author', 'category')
+            'title' => "Category",
+            'posts' => $category->posts->load('author', 'category'),
+            'mess' => "Categories by $category->name"
         ]);
 
     }

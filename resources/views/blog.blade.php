@@ -1,23 +1,80 @@
 @extends('layout/main')
 
 @section('main')
-<h1 class="mb-4">{{ $title }}</h1>
-    @foreach ($posts as $post)
-    <div class="mb-3">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <div class="border h-100 w-100 bg-light text-center">Gambar</div>
-            </div>
-          <div class="col">
-            <div class="card-body">
-              <h2 class="card-title"><a href="/Blog/{{ $post->slug }}" class="bold link-danger text-decoration-none">{{ $post->title }}</a></h2>
-              <a href="/Category/{{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a>
-              <p class="card-text">By {{ $post->excerpt }}</p>
+  @if ($posts->count())
+      {{ $skip = 0 }}
+    @if ($title == 'Blog' )
+      @include('partials/slideShow')
+      {{ $skip = 3 }}
+    @endif
+    <section class="section section-md bg-gray-100">
+      <div class="container">
+        <div class="row row-50">
+          <div class="col-lg-8">
+            <div class="main-component">
+              {{-- heading Component --}}
+              <article class="heading-component">
+                <div class="heading-component-inner">
+                  <h5 class="heading-component-title">{{ $mess }}
+                  </h5><a class="button button-xs button-gray-outline" href="#">All news</a>
+                </div>
+              </article>
+              <!-- Post Future-->
+              <div class="row row-30">
+              @foreach ($posts->skip($skip) as $post)
+                <div class="col-md-6">
+                  <article class="post-future">
+                    <a class="post-future-figure" href="#">
+                      <img src="{{ asset('images/news-2-1-368x287.jpg') }}" alt="" width="368" height="287"/>
+                    </a>
+                    <div class="post-future-main">
+                      <h4 class="post-future-title"><a href="/Blog/{{ $post->slug }}">{{ $post->title }}</a></h4>
+                      <div class="post-future-meta">
+                        <!-- Badge-->
+                        <div class="badge badge-secondary">{{ $post->category->name }}
+                        </div>
+                        <div class="post-future-time"><span class="icon mdi mdi-clock"></span>
+                          <time datetime="2020">{{ $post->created_at->diffForHumans() }}</time>
+                        </div>
+                      </div>
+                      <hr/>
+                      <div class="post-future-text">
+                        <p>{{ $post->excerpt }}</p>
+                      </div>
+                      <div class="post-future-footer group-flex group-flex-xs"><a class="button button-gray-outline" href="/Blog/{{ $post->slug }}">Read more</a>
+                        <div class="post-future-share">
+                          <div class="inline-toggle-parent">
+                            <div class="inline-toggle icon material-icons-share"></div>
+                            <div class="inline-toggle-element">
+                              <ul class="list-inline">
+                                <li>Share</li>
+                                <li><a class="icon fa-facebook" href="#"></a></li>
+                                <li><a class="icon fa-twitter" href="#"></a></li>
+                                <li><a class="icon fa-google-plus" href="#"></a></li>
+                                <li><a class="icon fa-instagram" href="#"></a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                @endforeach
+              </div>
             </div>
           </div>
         </div>
       </div>
-    @endforeach
+  @else
+  {{ dd($posts) }}
+  <h1 class="text-center text-danger">Nothing here Yet</h1>
+  @endif
+  {{--  --}}
+  <div class="col-md-3">
+
+  </div>
+</section>
 @endsection
 
 

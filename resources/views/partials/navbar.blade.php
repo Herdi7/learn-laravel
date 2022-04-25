@@ -1,21 +1,41 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
-      <a class="navbar-brand" href="#">HArubic</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link {{ ($title == 'Home') ? 'active' : '' }}" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ ($title == 'Blog') ? 'active' : '' }}" href="/Blog">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ ($title == 'About') ? 'active' : '' }}" href="/Authors">Authors</a>
-          </li>
-        </ul>
+<header class="section page-header rd-navbar-dark">
+  <!-- RD Navbar-->
+  <div class="rd-navbar-wrap">
+    <nav class="rd-navbar rd-navbar-classic" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="166px" data-xl-stick-up-offset="166px" data-xxl-stick-up-offset="166px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+      <div class="rd-navbar-panel">
+        <!-- RD Navbar Toggle-->
+        <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-main"><span></span></button>
+        <!-- RD Navbar Panel-->
       </div>
-    </div>
-  </nav>
+      <div class="rd-navbar-main">
+        <div class="rd-navbar-main-bottom rd-navbar-darker">
+          <div class="rd-navbar-main-container container">
+            <!-- RD Navbar Nav-->
+                              <ul class="rd-navbar-nav">
+                                <li class="rd-nav-item {{ ($title == 'Home') ? 'active' : '' }}"><a class="rd-nav-link" href="/">Beranda</a>
+                                </li>
+                                <li class="rd-nav-item {{ ($title == 'Blog') ? 'active' : '' }}"><a class="rd-nav-link" href="/Blog">Blog</a>
+                                </li>
+                                <li class="rd-nav-item {{ ($title == 'Category') ? 'active' : '' }}"><a class="rd-nav-link" href="/Category">Category</a>
+                                </li>
+                                <li class="rd-nav-item {{ ($title == 'About') ? 'active' : '' }}"><a class="rd-nav-link" href="/About">About</a>
+                                </li>
+                              </ul>
+              <!-- RD Navbar Search-->
+              <div class="rd-navbar-search">
+                <button class="rd-navbar-search-toggle" data-rd-navbar-toggle=".rd-navbar-search"><span></span></button>
+                  <form class="rd-search" action="/Blog/" data-search-live="rd-search-results-live" method="GET">
+                    <div class="form-wrap">
+                      <label class="form-label" for="rd-navbar-search-form-input">Enter your search request here...</label>
+                      <input class="rd-navbar-search-form-input form-input" id="rd-navbar-search-form-input" type="text" name="search" autocomplete="off">
+                      <div class="rd-search-results-live" id="rd-search-results-live"></div>
+                    </div>
+                    <button class="rd-search-form-submit fl-budicons-launch-search81" type="submit"></button>
+                  </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>

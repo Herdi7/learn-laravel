@@ -9,9 +9,19 @@ class BlogController extends Controller
 {
     public function index()
     {
+        $post = Post::with('author', 'category');
+        $title = 'Blog';
+        $mess = 'All Post';
+        if( request('search') ) {
+            $req = request('search');
+            $post = Post::where('title', 'like', "%$req%");
+            $title = "Search";
+            $mess = "Result For '$req'";
+        }
         return view('blog', [
-            'title' => 'All Post',
-            'posts' => Post::with('author', 'category')->latest()->get()
+            'title' => $title,
+            'posts' => $post->latest()->get(),
+            'mess' => $mess
         ]);
     }
 
