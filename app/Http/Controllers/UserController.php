@@ -11,7 +11,8 @@ class UserController extends Controller
     {
         return view('user/author',[
             'title' => 'Author List',
-            'authors' => User::all()
+            'authors' => User::all(),
+            'active' => 'Author'
         ]);
     }
 
@@ -19,7 +20,7 @@ class UserController extends Controller
     {
         return view('blog', [
             'title' => "Write by: $author->name",
-            'mess' => "Write by: $author->name",
+            'active' => 'Author',
             'posts' => $author->posts->load('author', 'category')
         ]);
 

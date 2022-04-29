@@ -12,13 +12,13 @@
           <div class="rd-navbar-main-container container">
             <!-- RD Navbar Nav-->
                               <ul class="rd-navbar-nav">
-                                <li class="rd-nav-item {{ ($title == 'Home') ? 'active' : '' }}"><a class="rd-nav-link" href="/">Beranda</a>
+                                <li class="rd-nav-item {{ ($active == 'Home') ? 'active' : '' }}"><a class="rd-nav-link" href="/">Beranda</a>
                                 </li>
-                                <li class="rd-nav-item {{ ($title == 'Blog') ? 'active' : '' }}"><a class="rd-nav-link" href="/Blog">Blog</a>
+                                <li class="rd-nav-item {{ ($active == 'Blog') ? 'active' : '' }}"><a class="rd-nav-link" href="/Blog">Blog</a>
                                 </li>
-                                <li class="rd-nav-item {{ ($title == 'Category') ? 'active' : '' }}"><a class="rd-nav-link" href="/Category">Category</a>
+                                <li class="rd-nav-item {{ ($active == 'Category') ? 'active' : '' }}"><a class="rd-nav-link" href="/Category">Category</a>
                                 </li>
-                                <li class="rd-nav-item {{ ($title == 'About') ? 'active' : '' }}"><a class="rd-nav-link" href="/About">About</a>
+                                <li class="rd-nav-item {{ ($active == 'About') ? 'active' : '' }}"><a class="rd-nav-link" href="/About">About</a>
                                 </li>
                               </ul>
               <!-- RD Navbar Search-->
@@ -28,6 +28,9 @@
                     <div class="form-wrap">
                       <label class="form-label" for="rd-navbar-search-form-input">Enter your search request here...</label>
                       <input class="rd-navbar-search-form-input form-input" id="rd-navbar-search-form-input" type="text" name="search" autocomplete="off">
+                      @if (request('category'))
+                      <input type="hidden" name="category" value="{{ request('category') }}">
+                      @endif
                       <div class="rd-search-results-live" id="rd-search-results-live"></div>
                     </div>
                     <button class="rd-search-form-submit fl-budicons-launch-search81" type="submit"></button>

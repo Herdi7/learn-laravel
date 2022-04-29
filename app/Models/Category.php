@@ -15,5 +15,10 @@ class Category extends Model
     {
         return $this->hasMany(Post::class);
     }
+
+    // public function scopeFilter($query, $fill)
+    // {
+    //     $query->where();
+    // }
 }
 

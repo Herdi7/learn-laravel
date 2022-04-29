@@ -4,32 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\User;
 
 class BlogController extends Controller
 {
     public function index()
     {
-        $post = Post::with('author', 'category');
-        $title = 'Blog';
-        $mess = 'All Post';
+        $title = 'All Post';
         if( request('search') ) {
-            $req = request('search');
-            $post = Post::where('title', 'like', "%$req%");
             $title = "Search";
-            $mess = "Result For '$req'";
         }
         return view('blog', [
             'title' => $title,
-            'posts' => $post->latest()->get(),
-            'mess' => $mess
+            'posts' => Post::with('author', 'category')->latest()->Filter(request(['search', 'category', 'author']))->paginate(7)->withQueryString(),
+            'categories' => Category::latest()->get(),
+            'authors' => User::latest()->get(),
+            'active' => 'Blog'
         ]);
     }
-
+    
     public function detail(Post $post)
     {
         return view('singlePost', [
             'title' => 'Single Post',
-            'post' => $post
+            'post' => $post,
+            'active' => 'Blog'
         ]);
     }
 }

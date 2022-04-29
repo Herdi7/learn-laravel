@@ -19,7 +19,8 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('home', [
-        'title' => 'Home'
+        'title' => 'Home',
+        'active' => 'Home'
     ]);
 });
 
