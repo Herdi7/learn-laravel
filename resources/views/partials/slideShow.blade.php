@@ -8,7 +8,7 @@
           <div class="col-xl-5">
             <div class="swiper-slide-caption">
               <h1 data-caption-animate="fadeInUp" data-caption-delay="100">{{ ($posts->count() >= 3) ? $posts[$i]->title : ''}}</h1>
-              <h4 data-caption-animate="fadeInUp" data-caption-delay="200">for soccer news, updates, <br class="d-none d-xl-block"> and game results</h4><a class="button button-primary" data-caption-animate="fadeInUp" data-caption-delay="300" href="about-us.html">Read More</a>
+              <h4 data-caption-animate="fadeInUp" data-caption-delay="200">for soccer news, updates, <br class="d-none d-xl-block"> and game results</h4><a class="button button-primary" data-caption-animate="fadeInUp" data-caption-delay="300" href="{{ '/Blog/'.$posts[$i]->slug }}">Read More</a>
             </div>
           </div>
         </div>

@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +31,11 @@ Route::get('/Blog', [BlogController::class, 'index']);
 Route::get('/Blog/{post:slug}',[BlogController::class, 'detail']);
 // category
 Route::get('/Category',[CategoryController::class, 'index']);
-Route::get('/Category/{category:slug}',[CategoryController::class, 'Category']);
+Route::get('/Category/{category:slug}',[BlogController::class, 'index']);
 // User
 Route::get('/Authors', [UserController::class, 'index']);
-Route::get('/Authors/{author:username}', [UserController::class, 'userPost']);
+Route::get('/Author/{author:username}', [BlogController::class, 'index']);
+// user log
+Route::get('/Login', [LoginController::class, 'index']);
+Route::get('/Register', [RegisterController::class, 'create']);
+Route::post('/Register', [RegisterController::class, 'store']);

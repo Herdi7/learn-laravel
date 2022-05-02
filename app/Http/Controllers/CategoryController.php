@@ -15,15 +15,4 @@ class CategoryController extends Controller
             'active' => 'Category'
         ]);
     }
-
-    public function category(Category $category)
-    {
-        // dd($category);
-        return view('blog', [
-            'title' => "Category",
-            'posts' => $category->posts->load('author', 'category'),
-            'active' => 'Category'
-        ]);
-
-    }
 }

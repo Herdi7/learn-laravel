@@ -21,6 +21,10 @@
                                 <li class="rd-nav-item {{ ($active == 'About') ? 'active' : '' }}"><a class="rd-nav-link" href="/About">About</a>
                                 </li>
                               </ul>
+                              {{-- login btn --}}
+                              <ul class="rd-navbar-nav">
+                                <li class="rd-nav-item btn btn-primary"><a href="/Login" class="rd-nav-link">Login</a></li>
+                              </ul>
               <!-- RD Navbar Search-->
               <div class="rd-navbar-search">
                 <button class="rd-navbar-search-toggle" data-rd-navbar-toggle=".rd-navbar-search"><span></span></button>

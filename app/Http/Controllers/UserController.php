@@ -15,14 +15,4 @@ class UserController extends Controller
             'active' => 'Author'
         ]);
     }
-
-    public function userPost(User $author)
-    {
-        return view('blog', [
-            'title' => "Write by: $author->name",
-            'active' => 'Author',
-            'posts' => $author->posts->load('author', 'category')
-        ]);
-
-    }
 }
