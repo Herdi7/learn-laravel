@@ -10,7 +10,7 @@ class RegisterController extends Controller
 
     public function create()
     {
-        return view('login/loginPage', [
+        return view('login/register', [
             'title' => "Lets Join!",
             'styles' => [ 
                 'body' => 'text-center',

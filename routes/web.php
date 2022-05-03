@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,14 @@ Route::get('/Category/{category:slug}',[BlogController::class, 'index']);
 Route::get('/Authors', [UserController::class, 'index']);
 Route::get('/Author/{author:username}', [BlogController::class, 'index']);
 // user log
-Route::get('/Login', [LoginController::class, 'index']);
-Route::get('/Register', [RegisterController::class, 'create']);
+Route::get('/Login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/Logout', [LoginController::class, 'logout']);
+Route::post('/Login', [LoginController::class, 'authenticate']);
+
+// register
+Route::get('/Register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('/Register', [RegisterController::class, 'store']);
+
+// dashboard
+Route::get('/Dashboard', [DashboardController::class, 'index'])->middleware('auth');
+

@@ -23,7 +23,28 @@
                               </ul>
                               {{-- login btn --}}
                               <ul class="rd-navbar-nav">
+                                @auth
+                                <div class="cart-inline-toggled-outer">
+                                  <!-- Link Cart-->
+                                  <button class="link link-cart cart-inline-toggle" data-rd-navbar-toggle="#cart-inline"><span class="link-cart-icon fl-bigmug-line-user143"></span></button>
+                                  <article class="cart-inline cart-inline-toggled bg-light" id="cart-inline">
+                                    <div class="cart-inline-inner">
+                                      <div class="cart-inline-header">
+                                        <li class="rd-nav-item"><a class="text-black rd-nav-link link link-icon link-icon-left link-classic" href="/Dashboard" class="rd-nav-link"><span class="icon fl-bigmug-line-menu40"></span>My Dashboard</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li class="rd-nav-item">
+                                          <form action="/Logout" method="post">
+                                            @csrf
+                                              <button class="text-black btn rd-nav-link link link-icon link-icon-left link-classic" type="submit"><span class="icon fl-bigmug-line-login9"></span>Logout</button>
+                                            </form>
+                                          </li>
+                                      </div>
+                                    </div>
+                                  </article>
+                                </div>
+                                @else
                                 <li class="rd-nav-item btn btn-primary"><a href="/Login" class="rd-nav-link">Login</a></li>
+                                @endauth
                               </ul>
               <!-- RD Navbar Search-->
               <div class="rd-navbar-search">
