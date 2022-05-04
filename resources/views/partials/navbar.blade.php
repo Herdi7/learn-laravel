@@ -33,7 +33,7 @@
                                         <li class="rd-nav-item"><a class="text-black rd-nav-link link link-icon link-icon-left link-classic" href="/Dashboard" class="rd-nav-link"><span class="icon fl-bigmug-line-menu40"></span>My Dashboard</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li class="rd-nav-item">
-                                          <form action="/Logout" method="post">
+                                            <form action="/Logout" method="post">
                                             @csrf
                                               <button class="text-black btn rd-nav-link link link-icon link-icon-left link-classic" type="submit"><span class="icon fl-bigmug-line-login9"></span>Logout</button>
                                             </form>

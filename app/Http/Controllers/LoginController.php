@@ -18,17 +18,6 @@ class LoginController extends Controller
         ]);
     }
 
-    public function register()
-    {
-        return view('login/loginPage', [
-            'title' => "Lets Join!",
-            'styles' => [ 
-                'body' => 'text-center',
-                'css' => asset('css/signin.css')
-            ]
-        ]);
-    }
-
     public function authenticate(Request $request)
     {
         $authenticate = $request->validate([
