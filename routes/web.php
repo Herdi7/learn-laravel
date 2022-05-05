@@ -46,9 +46,7 @@ Route::get('/Register', [RegisterController::class, 'create'])->middleware('gues
 Route::post('/Register', [RegisterController::class, 'store']);
 
 // dashboard
-Route::get('/Dashboard', function() {
-    return view('dashboard/index');
-})->middleware('auth');
+Route::get('/Dashboard', fn() => view('dashboard/index') )->middleware('auth');
 
 Route::get('Dashboard/posts/getSlug', [DashboardPostController::class, 'getSlug'])->middleware('auth');
 Route::resource('Dashboard/posts', DashboardPostController::class)->middleware('auth');

@@ -7,6 +7,12 @@
     <a href="/Dashboard/posts/create" class="btn btn-primary">Add New Post</a>
   </div>
 </div>
+@if (session()->has('success'))
+<div class="alert alert-success alert-dismissible fade show py-2" role="alert">
+  {{ session('success') }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 <div class="table-responsive my-4">
     <table class="table table-striped table-sm">
       <thead>

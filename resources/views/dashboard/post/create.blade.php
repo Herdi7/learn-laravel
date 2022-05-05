@@ -7,25 +7,40 @@
 
 <div class="col-lg-8">
 {{-- form --}}
-    <form action="/Dashboard/posts/store" method="post">
+    <form method="post" action="/Dashboard/posts">
+        @csrf
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="title" placeholder="Your Title" name="title">
+            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="Your Title" name="title" value="{{ old('title') }}" required>
             <label for="title">Title</label>
+            <div id="titleFeedback" class="invalid-feedback mb-1">
+                {{ $errors->first('title') }}
+            </div>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="slug" placeholder="Your Title" name="slug" disabled readonly>
+            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" placeholder="Your Title" name="slug" value="{{ old('slug') }}">
             <label for="slug">Slug</label>
+            <div id="slugFeedback" class="invalid-feedback mb-1">
+                {{ $errors->first('title') }}
+            </div>
         </div>
         <div class="mb-3">
-            <select class="form-select">
-                <option selected>Pilih Kategori dari Artikel</option>
+            <select class="form-select @error('category') is-invalid @enderror" name="category_id">
                 @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @if ($category == old('category'))
+                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                    @else
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endif
                 @endforeach
               </select>
         </div>
-        <div style="height:400px;">
-            <input id="body" type="hidden" name="body">
+        @error('body')
+        <div class="text-danger mb-1">
+            {{ $errors->first('body') }}
+        </div>
+        @enderror
+        <div style="height:480px;">
+            <input id="body" type="hidden" name="body" value="{{ old('body') }}">
             <trix-editor input="body" class="h-100 overflow-auto"></trix-editor>
         </div>
         <button type="submit" class="btn btn-primary mt-5">Upload</button>
