@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="{{ asset('/css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
 
+    {{-- trix editor --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/trix.css') }}">
+    <script type="text/javascript" src="{{ asset('/js/trix.js') }}"></script>
+
   </head>
   <body>
     
@@ -25,8 +29,8 @@
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('dashboard.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dashboard.js') }}"></script>
+<script src="{{ asset('fonts/feather/feather.js') }}"></script>
   </body>
 </html>
