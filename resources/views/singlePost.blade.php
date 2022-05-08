@@ -5,7 +5,7 @@
         <section class="section section-md bg-gray-100">
             <div class="container">
                 <article>
-                    <img src="{{ asset('images/news-2-1-368x287.jpg') }}" alt="" width="368" height="287"/>
+                    <img src="{{ asset("storage/$post->image") }}" alt="" width="368" height="287"/>
                     <h1>{{ $post->title }} </h1>
                     {{-- <p class="text-danger">{{ $post->author }}</p> --}}
                     <div class="flex-row justify-content-between">

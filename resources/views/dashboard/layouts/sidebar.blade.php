@@ -13,6 +13,12 @@
             My Post
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">
+            <i data-feather="file"></i>
+            Back To Home
+          </a>
+        </li>
       </ul>
     </div>
   </nav>

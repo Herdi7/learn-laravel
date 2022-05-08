@@ -16,6 +16,7 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->sentence(5),
             'slug' => $this->faker->unique()->slug(),
+            'image' => 'post-image/Default.jpg',
             'excerpt' => $this->faker->paragraph(),
             'body' => collect($this->faker->paragraphs(12))->map(function($p) {return "<p>$p</p>"; })->implode(''),
             'user_id' => rand(1, 4),

@@ -46,9 +46,16 @@ class DashboardPostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:posts',
+            'image' => 'image|file|max:2000',
             'category_id' => 'required',
             'body' => 'required'
         ]);
+        if( $request->file('image') ){
+            $validatedData['image'] = $request->file('image')->store('post-image');
+        } else {
+            $validatedData['image'] = 'post-image/Default.jpg';
+        }
+
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] =  Str::limit(strip_tags($request->body), 100);
 
@@ -78,7 +85,10 @@ class DashboardPostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('dashboard/post/edit', [
+            'categories' => Category::all(),
+            'post' => $post
+        ]);
     }
 
     /**
@@ -90,7 +100,22 @@ class DashboardPostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $rules = [
+            'title' => 'required|max:255',
+            'category_id' => 'required',
+            'body' => 'required'
+        ];
+
+        if( $request->slug != $post->slug ) {
+            $rules['slug'] = 'required|unique:posts';
+        }
+
+        $validatedData = $request->validate($rules);
+        $validatedData['excerpt'] =  Str::limit(strip_tags($request->body), 100);
+        Post::where('id', $post->id)
+            ->update($validatedData);
+
+        return redirect('/Dashboard/posts')->with('success', 'Blog Baru Telah Di Ubah');
     }
 
     /**
@@ -101,7 +126,9 @@ class DashboardPostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        Post::destroy($post->id); 
+
+        return redirect('/Dashboard/posts')->with('success', 'Post Telah Dihapus');
     }
 
     public function getSlug(Request $request)

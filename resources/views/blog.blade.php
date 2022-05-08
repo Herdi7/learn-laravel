@@ -2,10 +2,10 @@
 
 @section('main')
   @if ($posts->count())
-      {{ $skip = 0 }}
+      <?php $skip = 0; ?>
     @if ($title == 'All Post' )
       @include('partials/slideShow')
-      {{ $skip = 3 }}
+      <?php $skip = 3; ?>
     @endif
     <section class="section section-md bg-gray-100">
       <div class="container">
@@ -25,7 +25,7 @@
                   <div class="col-md-6">
                     <article class="post-future">
                       <a class="post-future-figure" href="#">
-                        <img src="{{ asset('images/news-2-1-368x287.jpg') }}" alt="" width="368" height="287"/>
+                        <img src="{{ asset("storage/$post->image") }}" alt="" width="368" height="287"/>
                       </a>
                       <div class="post-future-main">
                         <h4 class="post-future-title"><a href="/Blog/{{ $post->slug }}">{{ $post->title }}</a></h4>

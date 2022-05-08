@@ -2,7 +2,7 @@
 <section class="section swiper-container swiper-slider swiper-classic bg-gray-2" data-loop="true" data-autoplay="4000" data-simulate-touch="false" data-slide-effect="fade">
   <div class="swiper-wrapper">
     @for ($i = 0; $i < 3; $i++)       
-    <div class="swiper-slide" data-slide-bg="images/slider-1-slide-3-1920x671.jpg">
+    <div class="swiper-slide" data-slide-bg="{{ asset("storage/". $posts[$i]->image) }}">
       <div class="container">
         <div class="row">
           <div class="col-xl-5">
