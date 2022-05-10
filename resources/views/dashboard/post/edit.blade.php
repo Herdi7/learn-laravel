@@ -5,7 +5,7 @@
     <h1 class="h2">Edit Post</h1>
 </div>
     {{-- form --}}
-    <form method="post" action="/Dashboard/posts/{{ $post->slug }}">
+    <form method="post" action="/Dashboard/posts/{{ $post->slug }}" enctype="multipart/form-data">
         @method('put')
         @csrf
         <div class="row">
@@ -28,6 +28,11 @@
                     <input id="body" type="hidden" name="body" value="{{ old('body', $post->body) }}">
                     <trix-editor input="body" class="h-100 overflow-auto"></trix-editor>
                 </div>
+                @error('body')
+                <div class="text-danger mb-1">
+                    {{ $errors->first('body') }}
+                </div>
+                @enderror
             </div>
             <div class="col-md-3">
                 <div class="form-floating mb-3">
@@ -48,11 +53,17 @@
                         @endforeach
                     </select>
                 </div>
-                @error('body')
-                <div class="text-danger mb-1">
-                    {{ $errors->first('body') }}
+                <div class="form-floating mb-3">
+                    <div class="input-group">
+                        @if ($post->image)
+                            <img src="{{ asset("storage/". $post->image) }}" class="img-prev img-fluid d-block">
+                        @else
+                            <img class="img-prev img-fluid">
+                        @endif
+                        <input type="hidden" name="oldImage" value="{{ $post->image }}">
+                        <input type="file" id="img" class="form-control" name="image" onchange="imgPreview()">
+                    </div>
                 </div>
-                @enderror
             </div>
         </div>
     </form>
@@ -68,5 +79,20 @@
         .then(response => response.json())
         .then(data => slug.value = data.slug)
     })
+
+    function imgPreview(){
+        const img = document.querySelector('#img')
+        const imgPrev = document.querySelector('.img-prev')
+
+        imgPrev.style.display = 'block'
+
+        const oFReader = new FileReader()
+
+        oFReader.readAsDataURL(img.files[0])
+
+        oFReader.onload = function(oFREvent) {
+            imgPrev.src = oFREvent.target.result
+        }
+    }
 </script>
 @endsection

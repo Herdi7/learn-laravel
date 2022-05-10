@@ -57,7 +57,8 @@
             </div>
             <div class="form-floating mb-3">
                 <div class="input-group">
-                    <input type="file" class="form-control" name="image">
+                    <img class="img-prev img-fluid">
+                    <input type="file" id="img" class="form-control" name="image" onchange="imgPreview()">
                 </div>
             </div>
         </div>
@@ -74,5 +75,20 @@
         .then(response => response.json())
         .then(data => slug.value = data.slug)
     })
+
+    function imgPreview(){
+        const img = document.querySelector('#img')
+        const imgPrev = document.querySelector('.img-prev')
+
+        imgPrev.style.display = 'block'
+
+        const oFReader = new FileReader()
+
+        oFReader.readAsDataURL(img.files[0])
+
+        oFReader.onload = function(oFREvent) {
+            imgPrev.src = oFREvent.target.result
+        }
+    }
 </script>
 @endsection
