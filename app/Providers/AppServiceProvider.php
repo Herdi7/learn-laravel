@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 use Illuminate\Pagination\Paginator;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Gate::define('must_be_admin', function(User $user) {
+            return $user->is_Admin;
+        });
         Paginator::useBootstrap();
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\AdminCategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,4 +51,5 @@ Route::get('/Dashboard', fn() => view('dashboard/index') )->middleware('auth');
 
 Route::get('Dashboard/posts/getSlug', [DashboardPostController::class, 'getSlug'])->middleware('auth');
 Route::resource('Dashboard/posts', DashboardPostController::class)->middleware('auth');
+Route::resource('Dashboard/categories', AdminCategoriesController::class)->middleware('auth')->middleware('is_admin');
 

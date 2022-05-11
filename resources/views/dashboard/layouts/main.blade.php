@@ -13,6 +13,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/trix.css') }}">
     <script type="text/javascript" src="{{ asset('/js/trix.js') }}"></script>
 
+    {{-- faether icons --}}
+    <script src="https://unpkg.com/feather-icons"></script>
+
   </head>
   <body>
     
@@ -31,6 +34,8 @@
 
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('dashboard.js') }}"></script>
-<script src="{{ asset('fonts/feather/feather.js') }}"></script>
+<script>
+  feather.replace()
+</script>
   </body>
 </html>
